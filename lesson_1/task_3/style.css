@@ -1,6 +1,6 @@
 body{
-    width: 1200px;
-    height: auto;
+    width: 64vw;
+    height: 50vw;
 }
 
 div{
@@ -9,12 +9,11 @@ div{
 
 .outer{
     display: block;
-    /*margin: 0 auto;*/
-    position: absolute;
-    width: 1000px;
-    height: 800px;
-    top: 20%;
-    left: 25%;
+    position: relative;
+    width: 90%;
+    height: 80%;
+    top: 10%;
+    left: 30%;
 }
 
 .inner{
@@ -32,4 +31,5 @@ div{
     height: 40%;
     float: left;
     top: 30%;
+    margin-left: -1px;
 }
