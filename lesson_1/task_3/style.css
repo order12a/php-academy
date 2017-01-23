@@ -1,3 +1,35 @@
-img{
+body{
+    width: 1200px;
+    height: auto;
+}
 
+div{
+    border: solid black 10px;
+}
+
+.outer{
+    display: block;
+    /*margin: 0 auto;*/
+    position: absolute;
+    width: 1000px;
+    height: 800px;
+    top: 20%;
+    left: 25%;
+}
+
+.inner{
+    position: relative;
+    width: 60%;
+    height: 60%;
+    float: right;
+    margin-right: -10px;
+    top: 20%;
+}
+
+.deep{
+    position: relative;
+    width: 60%;
+    height: 40%;
+    float: left;
+    top: 30%;
 }
