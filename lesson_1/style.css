@@ -1,0 +1,36 @@
+p{
+  font-family: courier new;
+  font-size: 2em;
+  color: red;
+}
+
+h6{
+  font-size: 2em;
+}
+
+div{
+  height: 50px;
+  width: 50px;
+}
+
+.main{
+  position: relative;
+  background-color: green;
+  height: 200px;
+  width: 300px;
+}
+
+.one, .second{
+  position: absolute;
+}
+
+.one{
+  right: 0;
+  background-color: red;
+}
+
+.second{
+  margin: 5px;
+  left: 0;
+  background-color: blue;
+}
