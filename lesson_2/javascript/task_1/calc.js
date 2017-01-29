@@ -3,7 +3,7 @@
 var executeOnclick = function () {
 
     var v = Number(document.getElementById('speed').value);
-    if(isNaN(v) || v === 0){
+    if(isNaN(v) || v <= 0){
         document.getElementById('err_v').innerHTML = 'No value of speed has been entered or this is not a number!';
         return;
     }else {
@@ -15,7 +15,7 @@ var executeOnclick = function () {
 
     var t =  Number(document.getElementById('time').value);
 
-    if(t === 0 || isNaN(t)){
+    if(isNaN(t) || t <= 0){
         document.getElementById('err_t').innerHTML = '<p>No value of time has been entered or this is not a number!</p>';
         return;
     }else {
@@ -34,6 +34,13 @@ var calculate = function (v, t) {
     var g = 9.8;
 
     return v*t + (g *  Math.pow(t, 2))/2;
+}
+
+var clearInput = function () {
+    var inputs = document.getElementsByTagName('input');
+    for(var i = 0; i < inputs.length; i++){
+        inputs[i].value = '';
+    }
 }
 
 
