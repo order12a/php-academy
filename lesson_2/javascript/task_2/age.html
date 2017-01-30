@@ -13,39 +13,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../bootstrap/js/bootstrap.js"></script>
-    <script src="js/calcAcceleration.js"></script>
+    <script src="js/calcPermission.js"></script>
 </head>
 <body>
     <div class="col-md-4 center">
         <div>
-            <h2><small>Will calculate formula free fall acceleration</small></h2>
+            <div class="page-header">
+                <h1><small>Check that alcohol purchase is allowed to you</small></h1>
+            </div>
             <blockquote>
-                <p>
-                    <var>
-                        h = V<sub>0</sub>t + gt<sup>2</sup>/2
-                    </var>
-                </p>
+                <p>Please enter your age in a field below</p>
             </blockquote>
             <div class="col-md-7">
                 <div class="form-group">
-                    <label for="speed">V<sub>0</sub></label>
-                    <input type="text" class="form-control" id="speed" placeholder="Speed value"/>
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control" id="age" placeholder="Your age"/>
                     <p id="err_v"></p>
-                </div>
-                <div class="form-group">
-                    <label for="time">t</label>
-                    <input type="text" class="form-control" id="time" placeholder="time value"/>
-                    <p id="err_t"></p>
                 </div>
                 <div class="btn-group" role="group" aria-label="Calculate function">
                     <button type="reset" class="btn btn-default clear" onclick="clearInput()">Clear</button>
-                    <button class="btn btn-success calculate" onclick="executeOnclick()">Calculate</button>
+                    <button class="btn btn-success calculate" onclick="getPurchasePermission()">Calculate</button>
                 </div>
             </div>
         </div>
     </div>
-    <div>
-        <p id="result" role="alert" hidden></p>
+    <div class="shift">
+        <div>
+            <p id="result" role="alert" hidden></p>
+        </div>
     </div>
 </body>
 </html>
