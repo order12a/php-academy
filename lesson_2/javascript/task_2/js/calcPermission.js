@@ -37,4 +37,6 @@ var clearInput = function () {
     }
 }
 
+module.exports = calculate;
+
 
