@@ -1,0 +1,35 @@
+body{
+    width: 64vw;
+    height: 50vw;
+}
+
+div{
+    border: solid black 10px;
+}
+
+.outer{
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 80%;
+    top: 10%;
+    left: 30%;
+}
+
+.inner{
+    position: relative;
+    width: 60%;
+    height: 60%;
+    float: right;
+    margin-right: -10px;
+    top: 20%;
+}
+
+.deep{
+    position: relative;
+    width: 60%;
+    height: 40%;
+    float: left;
+    top: 30%;
+    margin-left: -1px;
+}
