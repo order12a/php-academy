@@ -17,4 +17,4 @@ describe('reverse of array elements tests', function () {
 
         expect(arr.reverseElements()).to.deep.equal(expectedArr);
     });
-})
+});

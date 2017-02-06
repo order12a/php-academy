@@ -3,3 +3,8 @@
 */node_modules
 /node_modules
 */*/node_modules
+*/.vscode/
+*/tasks.pdf
+lesson_1/hometask*
+lesson_2/javascript-essential-blur
+
