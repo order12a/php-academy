@@ -2,8 +2,6 @@
 /*/node_modules
 .idea/
 /*/.idea
-<<<<<<< HEAD
-=======
 */node_modules
 /node_modules
 */*/node_modules
@@ -11,6 +9,4 @@
 */tasks.pdf
 lesson_1/hometask*
 lesson_2/javascript-essential-blur
-
->>>>>>> c4521a4fe723c5d6d33f572c69c933b8851073a9
 
