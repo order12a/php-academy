@@ -28,20 +28,20 @@ var executeOnclick = function () {
     document.getElementById('result').removeAttribute('hidden');
     document.getElementById('result').setAttribute('class', 'col-md-3 center alert alert-success');
     document.getElementById('result').innerHTML = 'The result is: ' + calculate(v, t);
-}
+};
 
 var calculate = function (v, t) {
     var g = 9.8;
 
     return v*t + (g *  Math.pow(t, 2))/2;
-}
+};
 
 var clearInput = function () {
     var inputs = document.getElementsByTagName('input');
     for(var i = 0; i < inputs.length; i++){
         inputs[i].value = '';
     }
-}
+};
 
 module.exports = calculate;
 

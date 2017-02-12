@@ -1,58 +1,101 @@
 "use strict";
 
 var setupApp = function () {
-    var persons = [new Person('John', 'Dou', 30, ['java', 'c++', 'php']),
-        new Person('Steve', 'Conrad', 24, ['javascript', 'typescript', 'ruby', 'python']),
-        new Person('Jane', 'Hogan', 27, ['css', 'coffee-script', 'javascript'])];
 
     writeTable(persons);
+    document.getElementById('clear').onclick = clearInputs;
+    document.getElementById('add').onclick = addPerson;
+    document.getElementById('reset').onclick = resetData;
+    document.getElementsByTagName('th')[3].onclick = sortByAge;
+    // document.getElementsByTagName('th')[3].onclick = function () {
+    //     persons.sort(function (person1, person2) {
+    //         return person1.age - person2.age;
+    //     });
+    //
+    //     writeTable(persons);
+    // };
 };
 
-function reset() {
-    //TODO implement function for reset data to default
+
+function resetData() {
+    writeTable([new Person('John', 'Dou', 30, ['java', 'c++', 'php']),
+        new Person('Steve', 'Conrad', 24, ['javascript', 'typescript', 'ruby', 'python']),
+        new Person('Jane', 'Hogan', 27, ['css', 'coffee-script', 'javascript'])]);
 }
 
-function addPerson() {
-    //TODO implement(create table if empty or add row at the bottom)
+function clearInputs() {
+    console.log('Clear inputs clicked!');
+    var inputs = document.getElementsByTagName('input');
+    for(var i = 0; i < inputs.length; i++){
+        inputs[i].value = '';
+    }
+
+    var textareas = document.getElementsByTagName('textarea');
+    for(var i = 0; i < textareas.length; i++){
+        textareas[i].value = '';
+    }
 }
 
-function validateInput(value, expectedType) {
+function addPerson() {//TODO implement smart validation
+    var person = new Person();
+
+    person.firstName = document.getElementById('first_name').value;
+    person.lastName = document.getElementById('last_name').value;
+    person.age = +document.getElementById('age').value;
+    person.languages = (document.getElementById('langs').value).split(',');
+
+    persons.push(person);
+    writeTable(persons);
+}
+
+function validateInput(value, expectedType) {//TODO smart data validation
+    if(value === undefined || value === null){
+        throw new Error('Value was not set!');
+    }
+
     if(typeof value === expectedType){
         return value;
     }else {
         switch (expectedType){
             case "number":
             {
-                //TODO implement warning message
+                document.querySelector('err_number').innerHTML = 'No correct age was specified';
                 break;
             }
             case "string":
             {
-                //TODO implement warning message
+                document.querySelector('err_text').innerHTML = 'No correct text values was specified';
                 break;
             }
             default:
-                //TODO implement some code
+                console.log('No expected type specified');
                 return;
         }
     }
 }
 
 function writeTable(persons) {
+
     var counter = 1;
     var tableContainer;
+    var tbody = document.createElement('tbody');
 
     if(!(document.getElementsByTagName('table').length > 0)){
         tableContainer = createTableHeader();
+        tableContainer.appendChild(tbody);
+    }else {
+        var body = document.getElementsByClassName('center')[2];
+        body.removeChild(document.getElementsByTagName('table')[0]);
+
+        tableContainer = createTableHeader();
+        tableContainer.appendChild(tbody);
     }
     persons.forEach(function (person) {
-        var tbody = document.createElement('tbody');
         var tr = document.createElement('tr');
         var tdNum = document.createElement('td');
 
         tr.appendChild(tdNum);
         tdNum.innerHTML = counter;
-        tableContainer.appendChild(tbody);
         tbody.appendChild(tr);
         for(var prop in person){
             var text;
@@ -75,7 +118,7 @@ function writeTable(persons) {
 }
 
 function createTableHeader(){
-    var container = document.getElementsByClassName('center')[1];
+    var container = document.getElementsByClassName('center')[2];
     var tableContainer = document.createElement('table');
     tableContainer.setAttribute('class', 'table table-bordered');
     container.appendChild(tableContainer);
@@ -113,4 +156,14 @@ function Person(firstName, lastName, age, languages) {
     this.languages = languages;
 }
 
+var persons = [new Person('John', 'Dou', 30, ['java', 'c++', 'php']),
+    new Person('Steve', 'Conrad', 24, ['javascript', 'typescript', 'ruby', 'python']),
+    new Person('Jane', 'Hogan', 27, ['css', 'coffee-script', 'javascript'])];
 
+var sortByAge = function () {
+    persons.sort(function (person1, person2) {
+        return person1.age - person2.age;
+    });
+
+    writeTable(persons);
+};

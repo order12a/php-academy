@@ -27,42 +27,49 @@
                         <div class="form-group">
                             <label for="first_name">First Name</label>
                             <input type="text" class="form-control" id="first_name" placeholder="First Name"/>
-                            <p class="err_text"></p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="last_name">Last Name</label>
                             <input type="text" class="form-control" id="last_name" placeholder="Last Name"/>
-                            <p class="err_text"></p>
                         </div>
                     </div>
+                    <p id="err_text"></p>
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="age">age</label>
                             <input type="number" class="form-control" id="age" placeholder="Age"/>
-                            <p class="err_number"></p>
+                            <p id="err_number"></p>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="langs">Languages</label>
-                    <textarea type="text" class="form-control" id="langs" placeholder="Languages"></textarea>
-                    <p class="err_text"></p>
+                    <textarea class="form-control" id="langs" placeholder="Languages"></textarea>
+                    <p id="err_langs"></p>
                 </div>
                 <div class="btn-group" role="group" aria-label="Calculate function">
-                    <button type="reset" class="btn btn-default reset" onclick="clearInput()">Reset Data</button>
-                    <button class="btn btn-success add" onclick="personAdd()">Add Person</button>
+                    <button type="reset" class="btn btn-default reset" id="clear">Clear</button>
+                    <button class="btn btn-success add" id="add">Add Person</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-lg-6 center">
+        <blockquote>
+            <span class="left">Persons Table</span>
+            <span class="right">
+                <button type="button" class="btn btn-danger" id="reset">Reset Data</button>
+            </span>
+        </blockquote>
+    </div>
+    <div class="col-lg-5 center">
     </div>
     <script>
-        window.onload = setupApp();
+        window.onload = setupApp;
     </script>
 </body>
 </html>

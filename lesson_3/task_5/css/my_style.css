@@ -17,9 +17,24 @@ blockquote{
     margin-left: 10px;
 }
 
+.center:first-child{
+    margin-bottom: 20px;
+}
+
+.right>button{
+    margin-left: 60%;
+}
 
 #result{
     font-size: 16px;
     text-align: justify;
 }
 
+table{
+    margin-left: 15px;
+    margin-top: -25px;
+}
+
+th:hover{
+    background-color: ghostwhite;
+}
