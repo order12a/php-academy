@@ -21,9 +21,24 @@ blockquote{
     margin-bottom: 20px;
 }
 
-.right>button{
-    margin-left: 60%;
+.right>*{
+    margin-left: 3%;
 }
+
+.right > button:last-child{
+    float: right;
+    margin-right: -20px;
+}
+
+.btn-warning{
+    margin-left: -10px;
+}
+
+.left{
+    float: left;
+    margin-top: 5px;
+}
+
 
 #result{
     font-size: 16px;

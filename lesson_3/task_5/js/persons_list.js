@@ -6,21 +6,22 @@ var setupApp = function () {
     document.getElementById('clear').onclick = clearInputs;
     document.getElementById('add').onclick = addPerson;
     document.getElementById('reset').onclick = resetData;
-    document.getElementsByTagName('th')[3].onclick = sortByAge;
-    // document.getElementsByTagName('th')[3].onclick = function () {
-    //     persons.sort(function (person1, person2) {
-    //         return person1.age - person2.age;
-    //     });
-    //
-    //     writeTable(persons);
-    // };
+    document.getElementById('f_name').onclick = sortByFirstName;
+    document.getElementById('l_name').onclick = sortByLastName;
+    document.getElementById('age_col').onclick = sortByAge;
+    document.getElementById('langs_col').onclick = sortByLanguageQuantity;
+
+    document.getElementById('remove').onclick = deleteUser;
 };
 
+var initData = function () {
+    return [new Person('John', 'Dou', 30, ['java', 'c++', 'php']),
+        new Person('Steve', 'Conrad', 24, ['javascript', 'typescript', 'ruby', 'python']),
+        new Person('Jane', 'Hogan', 27, ['css', 'coffee-script', 'javascript'])];
+};
 
 function resetData() {
-    writeTable([new Person('John', 'Dou', 30, ['java', 'c++', 'php']),
-        new Person('Steve', 'Conrad', 24, ['javascript', 'typescript', 'ruby', 'python']),
-        new Person('Jane', 'Hogan', 27, ['css', 'coffee-script', 'javascript'])]);
+    writeTable(initData());
 }
 
 function clearInputs() {
@@ -36,43 +37,44 @@ function clearInputs() {
     }
 }
 
-function addPerson() {//TODO implement smart validation
+function addPerson() {
+
     var person = new Person();
 
-    person.firstName = document.getElementById('first_name').value;
-    person.lastName = document.getElementById('last_name').value;
-    person.age = +document.getElementById('age').value;
+    person.firstName = validateInput(document.getElementById('first_name'));
+    person.lastName = validateInput(document.getElementById('last_name'));
+    person.age = +validateInput(document.getElementById('age'));
     person.languages = (document.getElementById('langs').value).split(',');
 
     persons.push(person);
     writeTable(persons);
+    clearInputs();
 }
 
-function validateInput(value, expectedType) {//TODO smart data validation
-    if(value === undefined || value === null){
+function validateInput(element) {//TODO smart data validation
+    var value = element.value;
+
+    if(value === undefined || value === null || value === ''){
         throw new Error('Value was not set!');
     }
 
-    if(typeof value === expectedType){
-        return value;
-    }else {
-        switch (expectedType){
-            case "number":
-            {
-                document.querySelector('err_number').innerHTML = 'No correct age was specified';
-                break;
-            }
-            case "string":
-            {
-                document.querySelector('err_text').innerHTML = 'No correct text values was specified';
-                break;
-            }
-            default:
-                console.log('No expected type specified');
-                return;
+    return value;
+}
+
+var deleteUser = function () {
+    var remove_criteria = document.getElementById('remove_criteria').value;
+    remove_criteria.toLowerCase();
+    for (var i = 0; i < persons.length; i++){
+        if((persons[i].firstName).toLowerCase() === remove_criteria || persons[i].lastName.toLowerCase() === remove_criteria){
+            persons.splice(i, 1);
+            clearInputs();
+        }else {
+            // document.getElementById('remove_criteria').style.color = 'red'; TODO implement smart warnings
         }
     }
-}
+
+    writeTable(persons);
+};
 
 function writeTable(persons) {
 
@@ -131,9 +133,13 @@ function createTableHeader(){
 
     var headerNumber = document.createElement('th');
     var headerFName = document.createElement('th');
+    headerFName.setAttribute('id', 'f_name');
     var headerLName = document.createElement('th');
+    headerLName.setAttribute('id', 'l_name');
     var headerAge = document.createElement('th');
+    headerAge.setAttribute('id', 'age_col');
     var headerLangs = document.createElement('th');
+    headerLangs.setAttribute('id', 'langs_col');
 
     headerRow.appendChild(headerNumber);
     headerNumber.innerHTML = '#';
@@ -156,14 +162,46 @@ function Person(firstName, lastName, age, languages) {
     this.languages = languages;
 }
 
-var persons = [new Person('John', 'Dou', 30, ['java', 'c++', 'php']),
-    new Person('Steve', 'Conrad', 24, ['javascript', 'typescript', 'ruby', 'python']),
-    new Person('Jane', 'Hogan', 27, ['css', 'coffee-script', 'javascript'])];
+var persons = initData();
 
 var sortByAge = function () {
+    console.log('sortByAge');
     persons.sort(function (person1, person2) {
         return person1.age - person2.age;
     });
 
     writeTable(persons);
 };
+
+var sortByFirstName = function () {
+    console.log('sortByFirstName');
+    persons.sort(function (person1, person2) {
+        return (person1.firstName.charCodeAt(0) + person1.firstName.charCodeAt(1)) - (person2.firstName.charCodeAt(0) + person2.firstName.charCodeAt(1));
+    });
+
+    writeTable(persons);
+};
+
+var sortByLastName = function () {
+    console.log('sortByLastName');
+    persons.sort(function (person1, person2) {
+        return person1.lastName.charCodeAt(0) - person2.lastName.charCodeAt(0);
+    });
+
+    writeTable(persons);
+};
+
+var sortByLanguageQuantity = function () {
+
+    console.log('sortByLanguageQuantity');
+    persons.sort(function (person1, person2) {
+        return person1.languages.length - person2.languages.length;
+    });
+
+    persons.reverse();
+    writeTable(persons);
+};
+
+var temp;
+
+
