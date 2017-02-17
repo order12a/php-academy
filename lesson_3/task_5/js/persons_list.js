@@ -51,7 +51,7 @@ function addPerson() {
     clearInputs();
 }
 
-function validateInput(element) {//TODO smart data validation
+function validateInput(element) {//TODO improve smart data validation
     var value = element.value;
 
     if(value === undefined || value === null || value === ''){
@@ -164,6 +164,7 @@ function Person(firstName, lastName, age, languages) {
 
 var persons = initData();
 
+//TODO investigate why sort works only one time
 var sortByAge = function () {
     console.log('sortByAge');
     persons.sort(function (person1, person2) {
@@ -202,6 +203,5 @@ var sortByLanguageQuantity = function () {
     writeTable(persons);
 };
 
-var temp;
 
 
