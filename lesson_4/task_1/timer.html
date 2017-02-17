@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timer</title>
+    <!-- Bootstrap -->
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Own styles -->
+    <link href="style.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="timer.js"></script>
+</head>
+<body>
+    <div class="col-lg-5 block">
+        <span class="wrapper"><span id="output">____</span></span>
+        <button type="button" class="btn bg-success" id="start">Start Timer</button>
+        <button type="button" class="btn btn-warning" id="stop">Stop Timer</button>
+        <button type="button" class="btn btn-danger" id="reset">Reset Timer</button>
+    </div>
+    <script>
+        window.onload = app();
+    </script>
+</body>
+</html>
