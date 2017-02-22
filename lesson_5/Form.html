@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./css/materialize.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="./css/my_style.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+    <div class="row block">
+        <form class="col s8" id="reg_form" name="my_form">
+            <div class="row">
+                <div class="input-field col s5">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="name">Your Name</label>
+                    <input id="name" type="text" class="validate" placeholder="John Dou" name="userName">
+                </div>
+                <div class="input-field col s2">
+                    <label for="age">Your Age</label>
+                    <input id="age" type="number" class="validate" placeholder="24" name="age">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s7">
+                    <i class="material-icons prefix">email</i>
+                    <label for="email">Your Email</label>
+                    <input id="email" type="email" class="validate" placeholder="mail@domain.com" name="mail">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s7">
+                    <i class="material-icons prefix">phone</i>
+                    <label for="phone">Your Phone</label>
+                    <input id="phone" type="tel" class="validate" placeholder="+380681495223" name="phone">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s7">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="message" class="materialize-textarea" placeholder="Some Text" name="message"></textarea>
+                    <label for="message">Message</label>
+                </div>
+            </div>
+            <div class="row col s7">
+                <button class="btn waves-effect waves-light right" type="submit" name="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="./js/materialize.js"></script>
+<script type="text/javascript" src="./js/validate.js"></script>
+</body>
+</html>
