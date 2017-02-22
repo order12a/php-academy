@@ -1,0 +1,27 @@
+
+label{
+    font-size: 18px;
+    line-height: 1.68em;
+}
+
+.block{
+    margin: 20px;
+}
+
+.red-warning{
+    color: darkred;
+    font-size: 20px;
+    line-height: 1.48em;
+}
+
+/*.invalid{*/
+    /*border: 1px red solid;*/
+/*}*/
+
+/*.valid{*/
+    /*border: 1px forestgreen solid;*/
+/*}*/
+
+/*button{*/
+    /*float: right;*/
+/*}*/
