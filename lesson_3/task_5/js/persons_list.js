@@ -63,7 +63,11 @@ function validateInput(element) {//TODO improve smart data validation
 
 var deleteUser = function () {
     var remove_criteria = document.getElementById('remove_criteria').value;
-    remove_criteria.toLowerCase();
+    if (remove_criteria.length === 0){
+        return;
+    }
+    remove_criteria = remove_criteria.toLowerCase();
+    console.log(remove_criteria);
     for (var i = 0; i < persons.length; i++){
         if((persons[i].firstName).toLowerCase() === remove_criteria || persons[i].lastName.toLowerCase() === remove_criteria){
             persons.splice(i, 1);
@@ -83,12 +87,14 @@ function writeTable(persons) {
     var tbody = document.createElement('tbody');
 
     if(!(document.getElementsByTagName('table').length > 0)){
+        console.log('Creating new table');
         tableContainer = createTableHeader();
         tableContainer.appendChild(tbody);
     }else {
+        console.log('Removing table');
         var body = document.getElementsByClassName('center')[2];
         body.removeChild(document.getElementsByTagName('table')[0]);
-
+        console.log('Creating table again');
         tableContainer = createTableHeader();
         tableContainer.appendChild(tbody);
     }
@@ -166,41 +172,47 @@ var persons = initData();
 
 //TODO investigate why sort works only one time
 var sortByAge = function () {
+    var temp = [];
+    temp = temp.concat(persons);
     console.log('sortByAge');
-    persons.sort(function (person1, person2) {
+    temp.sort(function (person1, person2) {
         return person1.age - person2.age;
     });
 
-    writeTable(persons);
+    writeTable(temp);
 };
 
 var sortByFirstName = function () {
+    var ln = [];
+    ln = ln.concat(persons);
     console.log('sortByFirstName');
-    persons.sort(function (person1, person2) {
+    ln.sort(function (person1, person2) {
         return (person1.firstName.charCodeAt(0) + person1.firstName.charCodeAt(1)) - (person2.firstName.charCodeAt(0) + person2.firstName.charCodeAt(1));
     });
 
-    writeTable(persons);
+    writeTable(ln);
 };
 
 var sortByLastName = function () {
+    var fp = [];
+    fp = fp.concat(persons);
     console.log('sortByLastName');
-    persons.sort(function (person1, person2) {
+    fp.sort(function (person1, person2) {
         return person1.lastName.charCodeAt(0) - person2.lastName.charCodeAt(0);
     });
 
-    writeTable(persons);
+    writeTable(fp);
 };
 
 var sortByLanguageQuantity = function () {
-
+    var sp = [];
+    sp = sp.concat(persons);
     console.log('sortByLanguageQuantity');
-    persons.sort(function (person1, person2) {
-        return person1.languages.length - person2.languages.length;
+    sp.sort(function (person1, person2) {
+        return person2.languages.length - person1.languages.length;
     });
 
-    persons.reverse();
-    writeTable(persons);
+    writeTable(sp);
 };
 
 
